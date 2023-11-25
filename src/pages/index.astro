@@ -1,16 +1,42 @@
 ---
-
+import MyLayout from "../layouts/MyLayout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MyLayout>
+	<div class="container">
+		<h1 class="text-center mt-3 fw-bold">My To-Do App</h1>
+		<div class="container-row mt-5">
+			<input type="text" id="new-task" placeholder="Type task here">
+			<button class="px-3 rounded-pill">Add</button>
+		</div>
+	</div>
+</MyLayout>
+
+<style>
+	.container{
+		background: linear-gradient(to bottom right, lightgray, white);
+		height: 70vh;
+		max-width: 400px;
+		border-radius: 30px;
+		border: 2px solid MediumVioletRed;
+		margin: 10vh auto;
+	}
+	.container-row{
+		display: flex;
+		background: white;
+		border-radius: 20px;
+		padding-left: 10px;
+		height:32px;
+		justify-content: space-between;
+	}
+	.container-row input{
+		width: 100%;
+		border: none;
+		outline: none;
+		background: none;
+	}
+	.container-row button{
+		border: none;
+		background: MediumVioletRed;
+	}
+</style>
