@@ -3,30 +3,36 @@ import MyLayout from "../layouts/MyLayout.astro";
 ---
 
 <MyLayout>
+
 	<div class="container">
-		<h1 class="text-center mt-3 fw-bold">My To-Do App</h1>
-		<div class="container-row mt-5">
-			<input type="text" id="new-task" placeholder="Type task here">
-			<button class="px-3 rounded-pill">Add</button>
+		<h1 class="text-center pt-4 fs-2 fw-bold">My To-Do App</h1>
+		<div class="container-row my-5">
+			<input type="text" name="new-task" id="new-task" placeholder="Type task here">
+			<button id="add-button" class="px-3 rounded-pill">Add</button>
 		</div>
+		<ul id="list-container">
+			<li class="checked">Checked</li>
+			<li>Uncheked</li>
+		</ul>
 	</div>
 </MyLayout>
 
 <style>
 	.container{
-		background: linear-gradient(to bottom right, lightgray, white);
+		background: white;
 		height: 70vh;
 		max-width: 400px;
-		border-radius: 30px;
-		border: 2px solid MediumVioletRed;
-		margin: 10vh auto;
+		min-height: 400px;
+		border-radius: 20px;
+		margin-top: 15vh;
 	}
 	.container-row{
 		display: flex;
-		background: white;
+		background: rgb(189, 227, 250, 40%);
 		border-radius: 20px;
-		padding-left: 10px;
-		height:32px;
+		margin: auto 10px;
+		padding-left: 15px;
+		height:42px;
 		justify-content: space-between;
 	}
 	.container-row input{
@@ -37,6 +43,34 @@ import MyLayout from "../layouts/MyLayout.astro";
 	}
 	.container-row button{
 		border: none;
-		background: MediumVioletRed;
+		background: #92b2c2;
+	}
+	ul li{
+		list-style: none;
+		padding: 10px 0;
+		font-size: 16px;
+		position: relative;
+	}
+	ul li::before{
+		content: '';
+		position: absolute;
+		height: 28px;
+		width: 28px;
+		border-radius: 50%;
+		background-image: url(/unchecked.svg);
+		background-size: cover;
+		background-position: center;
+		top:8px;
+		left: -32px;
+	}
+	ul li.checked{
+		text-decoration: line-through;
+	}
+	ul li.checked::before{
+		background-image: url(/checked.svg);
 	}
 </style>
+
+<script>
+	import "../scripts/addTasks.js"
+</script>
